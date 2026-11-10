@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snack Eater Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-wrapper">
+    <header class="header">
+      <div class="title-area">
+        <h1>Snack Eater 🍕</h1>
+        <p class="subtitle">Chomp down snacks, dodge bombs & grow longer!</p>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-card">
+          <span class="stat-label">SCORE</span>
+          <span class="stat-val" id="scoreVal">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">HIGH SCORE</span>
+          <span class="stat-val" id="highScoreVal">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">SNACKS EATEN</span>
+          <span class="stat-val" id="snacksVal">0</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">SPEED</span>
+          <span class="stat-val" id="speedVal">1x</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="canvas-container">
+      <canvas id="gameCanvas" width="480" height="480"></canvas>
+
+      <!-- Overlay screens -->
+      <div id="startScreen" class="overlay-screen active">
+        <div class="screen-box">
+          <div class="hero-icon">🐍🍔</div>
+          <h2>Snack Eater</h2>
+          <p>Guide the hungry eater to gobble up delicious snacks!</p>
+          <div class="legend">
+            <span>🍕 Pizza: +10 pts</span>
+            <span>🍔 Burger: +15 pts</span>
+            <span>🍩 Donut: +20 pts</span>
+            <span>⭐ Star: +35 pts (Speed boost!)</span>
+            <span>💣 Bomb: Don't hit!</span>
+          </div>
+          <button id="startBtn" class="btn primary-btn">PLAY NOW</button>
+        </div>
+      </div>
+
+      <div id="gameOverScreen" class="overlay-screen">
+        <div class="screen-box">
+          <div class="hero-icon">💥</div>
+          <h2>Game Over!</h2>
+          <p id="deathReason">You crashed!</p>
+          <div class="final-score">
+            <span>Final Score</span>
+            <strong id="finalScoreVal">0</strong>
+          </div>
+          <button id="restartBtn" class="btn primary-btn">TRY AGAIN</button>
+        </div>
+      </div>
+
+      <div id="pauseScreen" class="overlay-screen">
+        <div class="screen-box">
+          <h2>Game Paused</h2>
+          <p>Take a breath!</p>
+          <button id="resumeBtn" class="btn primary-btn">RESUME</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="controls-guide">
+      <div class="controls-row">
+        <span><strong>Controls:</strong> Arrow keys / <kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> to Move</span>
+        <span><kbd>Space</kbd> or <kbd>P</kbd> to Pause</span>
+        <span><kbd>M</kbd> to Mute Sounds</span>
+      </div>
+      <div class="action-buttons">
+        <button id="pauseToggleBtn" class="btn small-btn">⏸ Pause</button>
+        <button id="soundToggleBtn" class="btn small-btn">🔊 Sound: ON</button>
+        <select id="difficultySelect" class="btn small-btn select-dropdown">
+          <option value="easy">Easy (Relaxed)</option>
+          <option value="normal" selected>Normal</option>
+          <option value="hard">Hard (Fast + Bombs)</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- On-screen D-pad for mobile / touch / mouse clicks -->
+    <div class="touch-controls">
+      <button class="d-pad-btn up" data-dir="UP">⬆️</button>
+      <div class="d-pad-middle">
+        <button class="d-pad-btn left" data-dir="LEFT">⬅️</button>
+        <button class="d-pad-btn down" data-dir="DOWN">⬇️</button>
+        <button class="d-pad-btn right" data-dir="RIGHT">➡️</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
